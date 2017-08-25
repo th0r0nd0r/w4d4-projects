@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <% log_button = (current_user ? "log out" : "log in") %>
+  <% username = (current_user ? current_user.user_name : "") %>
+  <head>
+    <title>NinetyNineCats</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <h6>
+      <%= username %>
+    </h6>
+    <a href="<%= (current_user ? cats_url : new_session_url) %>">
+      <button type="button" name="button" value="<%= log_button %>"><%= log_button %></button>
+    </a>
+
+    <%= yield %>
+  </body>
+</html>
